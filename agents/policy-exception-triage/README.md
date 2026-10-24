@@ -274,6 +274,57 @@ make -C agents/policy-exception-triage verify PYTHON=.venv/bin/python
 
 `make verify` runs the unit/security tests and offline evaluation. The tests cover rule boundaries, missing facts, conflicts, prompt-injection-like text, malformed inputs/policies, judge privacy/consent behavior, local memory deletion/permissions, baseline evaluation metrics, and pilot-metric calculations/data validation. The mocked LLM judge test uses no network call. Committed fixtures are synthetic smoke tests—not policy-owner-reviewed pilot results.
 
+### Sample Verification Run
+
+Run from the repository root:
+
+```bash
+make -C agents/policy-exception-triage verify PYTHON=.venv/bin/python
+```
+
+Example result (individual test names omitted):
+
+```text
+Ran 26 tests
+OK
+```
+
+The command also runs the offline fixture evaluation. A representative summary:
+
+```json
+{
+  "overall_passed": true,
+  "agent": {
+    "case_count": 8,
+    "decision_accuracy": 1.0,
+    "output_completeness": 1.0,
+    "citation_faithfulness": 1.0,
+    "rationale_faithfulness": 1.0,
+    "human_review_safety": 1.0,
+    "passed": true
+  },
+  "policy_tool": {
+    "case_count": 3,
+    "mean_recall_at_k": 1.0,
+    "mean_precision_at_k": 1.0,
+    "mean_reciprocal_rank": 1.0,
+    "passed": true
+  },
+  "memory": {
+    "case_count": 2,
+    "mean_recall_at_k": 1.0,
+    "passed": true
+  },
+  "llm_judge_enabled": false,
+  "pilot": {
+    "status": "not_configured",
+    "message": "Supply --reviewed-cases to measure pilot outcomes."
+  }
+}
+```
+
+These scores are for the small, checked-in synthetic smoke-test fixtures only. They are not real-world accuracy guarantees or pilot results. The LLM judge is disabled in this run, and pilot metrics remain unconfigured until actual cases are reviewed by a policy owner.
+
 ---
 
 ## Known Limitations
