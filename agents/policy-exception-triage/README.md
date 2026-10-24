@@ -22,6 +22,23 @@
 
 This is a demonstration using a fictional refund policy. Do not use it to decide real customer cases until the policy, input validation, privacy controls, evaluation data, and human review process have been approved for the intended setting.
 
+### Potential Applications
+
+The same policy-triage pattern could be adapted to other workflows by defining and reviewing the relevant policy rules, structured facts, and escalation process. These are examples of possible future configurations, not capabilities included in the current refund-policy demo.
+
+| Area | Example exception | Facts and rules a configured agent could check |
+| :--- | :--- | :--- |
+| Subscription support | A customer requests cancellation or a credit just after the normal deadline. | Days past deadline, service outage, account eligibility, and credit rules. |
+| Expense reimbursement | An employee submits an expense late or above the usual limit. | Submission date, amount, expense category, approval status, and exception rules. |
+| Warranty claims | A customer reports a defect shortly after the warranty expires. | Warranty end date, reported issue, purchase proof, and any grace-period policy. |
+| Service-level agreements | A customer asks for a service credit after an outage. | Outage duration, affected service, contract terms, and credit thresholds. |
+| Purchase approvals | A team requests an urgent purchase above its usual spending limit. | Amount, budget, urgency, cost center, and required approval level. |
+| Scheduling or leave | An employee asks for an exception to a scheduling or leave rule. | Notice period, available coverage, leave type, and relevant policy criteria. |
+| Shipping and delivery | A customer requests a shipping-fee waiver after a missed delivery commitment. | Promised and actual delivery dates, cause, and waiver policy. |
+| Access requests | A worker requests temporary access outside the standard process. | Requested system, role, duration, business justification, and required approvals. |
+
+Each adaptation requires an organization-approved policy, suitable fact validation, tests for boundary and failure cases, and a human review process. The agent does not automatically know or enforce these example policies.
+
 ---
 
 ## Technical Stack
